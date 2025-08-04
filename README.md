@@ -1,109 +1,80 @@
 # Terminal Portfolio
 
-A modern, interactive terminal-themed portfolio website built with React and TypeScript.
+Interactive terminal-themed portfolio website built with React and TypeScript. Navigate through my projects, skills, and experience using familiar command-line commands.
 
-## About
-
-This project showcases my work and experience through an interactive terminal interface. Users can navigate through different sections using familiar command-line commands.
+**[Live Demo](https://definitelyavi.github.io/jashan-portfolio)**
 
 ## Features
 
-- **Interactive Terminal Interface**: Navigate using real terminal commands
-- **Command System**: Multiple commands available (help, about, projects, skills, contact)
-- **Command History**: Arrow key navigation through previous commands
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Modern Tech Stack**: Built with React, TypeScript, and Tailwind CSS
+- Interactive terminal interface with real command processing
+- Command history navigation with arrow keys
+- Responsive design for desktop and mobile
+- Professional project showcase and skills assessment
 
 ## Available Commands
 
-- `help` - Show all available commands
-- `about` - Learn more about me
-- `projects` - View my featured projects
-- `skills` - See my technical skills
-- `contact` - Get my contact information
-- `clear` - Clear the terminal
-- `whoami` - Display current user
-- `date` - Show current date and time
+```bash
+help        # Show all available commands
+about       # Professional background and experience
+projects    # Featured projects with technical details
+skills      # Technical skills with proficiency levels
+interests   # Personal interests and hobbies
+contact     # Contact information and availability
+clear       # Clear terminal screen
+whoami      # Display current user
+date        # Show current date and time
+```
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript
-- **Styling**: Tailwind CSS
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **UI Components**: shadcn/ui, Radix UI
 - **Build Tool**: Vite
-- **UI Components**: shadcn/ui
-- **Font**: Fira Code (monospace)
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd terminal-portfolio
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173`
+- **Font**: Fira Code monospace
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Terminal.tsx          # Main terminal component
-│   ├── TerminalInput.tsx     # Input handling with history
-│   ├── TerminalOutput.tsx    # Output rendering
-│   └── ui/                   # Reusable UI components
+│   ├── Terminal.tsx          # Core terminal logic and command processing
+│   ├── TerminalInput.tsx     # Input handling with command history
+│   ├── TerminalOutput.tsx    # Output rendering and link processing
+│   ├── TerminalLoading.tsx   # Initial loading animation
+│   └── ui/                   # shadcn/ui component library
 ├── pages/
-│   └── Index.tsx            # Main page
+│   ├── Index.tsx             # Main portfolio page
+│   └── NotFound.tsx          # 404 error handling
+├── hooks/
+│   ├── use-mobile.tsx        # Mobile device detection
+│   └── use-toast.ts          # Toast notification system
 ├── lib/
-│   └── utils.ts             # Utility functions
-└── index.css               # Global styles and terminal theme
+│   └── utils.ts              # Utility functions
+└── index.css                 # Global styles and terminal theme
 ```
 
-## Customization
+## Quick Start
 
-To customize the portfolio content:
+```bash
+git clone https://github.com/definitelyavi/jashan-portfolio.git
+cd jashan-portfolio
+npm install
+npm run dev
+```
 
-1. **Personal Information**: Edit the command responses in `src/components/Terminal.tsx`
-2. **Styling**: Modify the terminal theme in `src/index.css`
-3. **Commands**: Add new commands or modify existing ones in the `commands` object
+Open `http://localhost:8080` to view the portfolio.
 
-## Building for Production
+## Build for Production
 
 ```bash
 npm run build
+npm run preview
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+## Author
 
-## Browser Support
-
-This project supports all modern browsers including:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+**Jashandeep Singh** - [GitHub](https://github.com/definitelyavi) | [LinkedIn](https://linkedin.com/in/jashansandhu) | [Website](https://jashanlikestocode.dev)
 
 ## License
 
-MIT License - feel free to use this project as a template for your own portfolio.
-
-## Contact
-
-For questions or collaboration opportunities, feel free to reach out through the terminal interface by running the `contact` command!
+MIT License - feel free to use as a template for your own portfolio.
