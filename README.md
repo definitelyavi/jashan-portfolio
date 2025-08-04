@@ -4,8 +4,6 @@ Interactive terminal-themed portfolio website built with React and TypeScript. N
 
 **[Live Demo](https://definitelyavi.github.io/jashan-portfolio)**
 
-![Portfolio Screenshot](./screenshots/portfolio.png)
-
 ## Features
 
 - Interactive terminal interface with real command processing
