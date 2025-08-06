@@ -22,6 +22,25 @@ Welcome to my interactive portfolio terminal!
 Type 'help' to see available commands.
 `;
 
+const MOBILE_WELCOME_MESSAGE = `
+████████╗███████╗██████╗ ███╗   ███╗
+╚══██╔══╝██╔════╝██╔══██╗████╗ ████║
+   ██║   █████╗  ██████╔╝██╔████╔██║
+   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║
+   ██║   ███████╗██║  ██║██║ ╚═╝ ██║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
+
+██╗███╗   ██╗ █████╗ ██╗     
+██║████╗  ██║██╔══██╗██║     
+██║██╔██╗ ██║███████║██║     
+██║██║╚██╗██║██╔══██║██║     
+██║██║ ╚████║██║  ██║███████╗
+╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+
+Welcome to my interactive portfolio terminal!
+Type 'help' to see available commands.
+`;
+
 const commands = {
   help: () => `Available commands:
   
@@ -148,11 +167,23 @@ export const Terminal: React.FC = () => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [typingLineId, setTypingLineId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    const welcomeLines = WELCOME_MESSAGE.split('\n').map((line, index) => ({
+    const message = isMobile ? MOBILE_WELCOME_MESSAGE : WELCOME_MESSAGE;
+    const welcomeLines = message.split('\n').map((line, index) => ({
       id: `welcome-${index}`,
       type: 'output' as const,
       content: line,
@@ -222,10 +253,11 @@ export const Terminal: React.FC = () => {
   }
 
   return (
-    <div className="h-screen bg-terminal-bg text-terminal-text font-mono flex flex-col">
+    <div className="h-screen bg-terminal-bg text-terminal-text font-mono flex flex-col touch-manipulation">
       <div 
         ref={terminalRef}
-        className="flex-1 overflow-y-auto p-4 space-y-1"
+        className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-1 overscroll-contain"
+        style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {lines.map((line) => (
           <TerminalOutput 
